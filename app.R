@@ -51,7 +51,7 @@ ui <- fluidPage(
              tabPanel("Species occurences viewer",
                       div(class="outer",
                           # tags$head(includeCSS("styles.css")),
-                          tags$head(includeCSS("https://raw.githubusercontent.com/juldebar/MIKAROKA/main/styles.css")),
+                          # tags$head(includeCSS("https://raw.githubusercontent.com/juldebar/MIKAROKA/main/styles.css")),
                           leafletOutput("mymap", width="100%", height="100%"),
                           
                           # Shiny versions prior to 0.11 should use class = "modal" instead.
