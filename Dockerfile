@@ -25,7 +25,16 @@ RUN R -e "install.packages(c('remotes','jsonlite','yaml'), repos='https://cran.r
 RUN git -C /root/ clone https://github.com/BastienIRD/darwin_core_viewer_BlueCloud_Workshop && echo "OK!"
 RUN ln -s /root/darwin_core_viewer_BlueCloud_Workshop /srv/darwin_core_viewer_BlueCloud_Workshop
 # install R app package dependencies
-RUN R -e "source('./srv/darwin_core_viewer_BlueCloud_Workshop/install.R')"
+ENV RENV_VERSION 0.17.3
+RUN R -e "install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))"
+RUN R -e "remotes::install_github('rstudio/renv@${RENV_VERSION}')"
+WORKDIR /project
+COPY renv.lock renv.lock
+
+# approach one
+ENV RENV_PATHS_LIBRARY renv/library
+
+RUN R -e "renv::restore()"
 
 #etc dirs (for config)
 RUN mkdir -p /etc/darwin_core_viewer_BlueCloud_Workshop/
