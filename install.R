@@ -1,4 +1,4 @@
-package <- jsonlite::read_json('./srv/darwin_core_viewer_BlueCloud_Workshop/package.json')
+package <- jsonlite::read_json('./srv/darwin_core_viewer_bluecloud_workshop/package.json')
 invisible(lapply(package$dependencies, function(pkg){
   from <- 'cran'
   pkg_installer <- remotes::install_version

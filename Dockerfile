@@ -22,8 +22,8 @@ RUN /rocker_scripts/install_geospatial.sh
 RUN install2.r --error --skipinstalled --ncpus -1 httpuv
 RUN R -e "install.packages(c('remotes','jsonlite','yaml'), repos='https://cran.r-project.org/')"
 # clone app
-RUN git -C /root/ clone https://github.com/BastienIRD/darwin_core_viewer_BlueCloud_Workshop && echo "OK!"
-RUN ln -s /root/darwin_core_viewer_BlueCloud_Workshop /srv/darwin_core_viewer_BlueCloud_Workshop
+RUN git -C /root/ clone https://github.com/BastienIRD/darwin_core_viewer_bluecloud_workshop && echo "OK!"
+RUN ln -s /root/darwin_core_viewer_bluecloud_workshop /srv/darwin_core_viewer_bluecloud_workshop
 # install R app package dependencies
 ENV RENV_VERSION 0.17.3
 RUN R -e "install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))"
@@ -37,10 +37,10 @@ ENV RENV_PATHS_LIBRARY renv/library
 RUN R -e "renv::restore()"
 
 #etc dirs (for config)
-RUN mkdir -p /etc/darwin_core_viewer_BlueCloud_Workshop/
+RUN mkdir -p /etc/darwin_core_viewer_bluecloud_workshop/
 
 EXPOSE 3838
 
-CMD ["R", "-e shiny::runApp('/srv/darwin_core_viewer_BlueCloud_Workshop',port=3838,host='0.0.0.0')"]
+CMD ["R", "-e shiny::runApp('/srv/darwin_core_viewer_bluecloud_workshop',port=3838,host='0.0.0.0')"]
 
 
