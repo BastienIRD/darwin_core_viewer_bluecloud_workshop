@@ -19,18 +19,18 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/bastienird/darwin_core_bluecloud_workshop
+          images: ghcr.io/BastienIRD/darwin_core_bluecloud_workshop
           flavor: latest=true
           tags: |
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}} 
       - name: Login to image repository
-        if: github.ref_type == 'tag'
+        if: true
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: BastienIRD
           password: ${{ secrets.GHCR_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v3
