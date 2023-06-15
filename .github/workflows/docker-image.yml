@@ -30,7 +30,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
+          username: bastienird
           password: ${{ secrets.GHCR_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v3
@@ -38,5 +38,5 @@ jobs:
           context: .
           file: Dockerfile
           push: ${{ github.ref_type == 'tag' }}
-          tags: ghcr.io/bastienird/darwin_core_bluecloud_workshop:${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
