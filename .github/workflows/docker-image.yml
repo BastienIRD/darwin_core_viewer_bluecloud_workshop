@@ -38,5 +38,5 @@ jobs:
           context: .
           file: Dockerfile
           push: ${{ github.ref_type == 'tag' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ghcr.io/bastienird/darwin_core_bluecloud_workshop:${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
