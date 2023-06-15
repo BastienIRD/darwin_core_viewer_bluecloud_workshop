@@ -22,7 +22,7 @@ RUN /rocker_scripts/install_geospatial.sh
 RUN install2.r --error --skipinstalled --ncpus -1 httpuv
 RUN R -e "install.packages(c('remotes','jsonlite','yaml'), repos='https://cran.r-project.org/')"
 # clone app
-RUN git -C /root/ clone https://github.com/BastienIRD/darwin_core_viewer_bluecloud_workshop && echo "OK!"
+RUN git -C /root/ clone https://github.com/bastienird/darwin_core_viewer_bluecloud_workshop && echo "OK!"
 RUN ln -s /root/darwin_core_viewer_bluecloud_workshop /srv/darwin_core_viewer_bluecloud_workshop
 # install R app package dependencies
 ENV RENV_VERSION 0.17.3
