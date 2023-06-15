@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
     libxml2-dev \
     libv8-dev \
-	libsodium-dev \
+    libsodium-dev \
     libsecret-1-dev \
     git
     
