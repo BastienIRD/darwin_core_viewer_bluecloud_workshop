@@ -19,7 +19,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/BastienIRD/darwin_core_bluecloud_workshop
+          images: ghcr.io/bastienird/darwin_core_bluecloud_workshop
           flavor: latest=true
           tags: |
             type=ref,event=branch
