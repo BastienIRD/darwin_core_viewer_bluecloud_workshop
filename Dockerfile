@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     libsodium-dev \
     libsecret-1-dev \
     git
+
     
 #geospatial
 RUN /rocker_scripts/install_geospatial.sh
