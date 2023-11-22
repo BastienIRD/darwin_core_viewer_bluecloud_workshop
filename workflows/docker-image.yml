@@ -3,7 +3,7 @@ name: docker-build-image
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
     tags:
       - "v*"
 
@@ -19,25 +19,25 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/fdiwg/smt-shiny
+          images: ghcr.io/bastienird/darwin_core_bluecloud_workshop
           flavor: latest=true
           tags: |
             type=ref,event=branch
             type=ref,event=pr
-            type=semver,pattern={{version}} 
-            
+            type=semver,pattern={{version}}  
       - name: Login to image repository
         if: github.ref_type == 'tag'
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          username: bastienird
+          password: ${{ secrets.GHCR_TOKEN2 }}
+
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: .
           file: Dockerfile
-          push: FALSE
+          push: ${{ github.ref_type == 'tag' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
