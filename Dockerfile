@@ -26,7 +26,7 @@ RUN R -e "install.packages(c('remotes','jsonlite','yaml'), repos='https://cran.r
 WORKDIR /root/darwin_core_data_viewer
 
 # Clone the repository
-RUN git clone -b CWP_database https://github.com/bastienird/darwin_core_data_viewer.git /root/darwin_core_data_viewer && \
+RUN git clone -b main https://github.com/bastienird/darwin_core_data_viewer.git /root/darwin_core_data_viewer && \
     echo "OK!"
 
 # Create a symbolic link to the cloned repository
