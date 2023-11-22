@@ -246,7 +246,7 @@ server <- function(input, output, session) {
     mymap <-leaflet(data=df,options = leafletOptions(minZoom = 1, maxZoom = 40)) %>% 
       clearPopups()  %>% 
       # https://leaflet-extras.github.io/leaflet-providers/preview/ 
-      addProviderTiles("Esri.OceanBasemap", group = "ESRI") %>%
+      addProviderTiles("Esri.WorldImagery", group = "ESRI") %>%
       addProviderTiles("Esri.WorldImagery", group = "ESRI2") %>% 
       clearBounds() %>%
       addMarkers(~as_tibble(st_coordinates(geometry))$X,~as_tibble(st_coordinates(geometry))$Y,
